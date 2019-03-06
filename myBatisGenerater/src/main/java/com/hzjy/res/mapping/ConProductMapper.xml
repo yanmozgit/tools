@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzjy.res.dao.ConProductMapper">
+  <resultMap id="BaseResultMap" type="com.hzjy.res.entity.ConProduct">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="DATA_SOURCE" jdbcType="VARCHAR" property="dataSource" />
+    <result column="OFFER_DESC" jdbcType="VARCHAR" property="offerDesc" />
+    <result column="OFFER_ID" jdbcType="VARCHAR" property="offerId" />
+    <result column="OFFER_NAME" jdbcType="VARCHAR" property="offerName" />
+    <result column="OFFER_UNIT_CODE" jdbcType="VARCHAR" property="offerUnitCode" />
+    <result column="OFFER_VALIDATE" jdbcType="DECIMAL" property="offerValidate" />
+    <result column="ORIGIN_PRICE" jdbcType="FLOAT" property="originPrice" />
+    <result column="PRICE" jdbcType="FLOAT" property="price" />
+    <result column="REMARK1" jdbcType="VARCHAR" property="remark1" />
+    <result column="REMARK2" jdbcType="VARCHAR" property="remark2" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="CHARGE_TYPE" jdbcType="DECIMAL" property="chargeType" />
+    <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+    <result column="DISCOUNT_DATE_BENGIN" jdbcType="TIMESTAMP" property="discountDateBengin" />
+    <result column="DISCOUNT_DATE_END" jdbcType="TIMESTAMP" property="discountDateEnd" />
+    <result column="DISCOUNT_PRICE" jdbcType="FLOAT" property="discountPrice" />
+    <result column="ENABLE_STATE" jdbcType="DECIMAL" property="enableState" />
+    <result column="EXAMINE_DESC" jdbcType="VARCHAR" property="examineDesc" />
+    <result column="EXAMINE_STATE" jdbcType="DECIMAL" property="examineState" />
+    <result column="HOTEL_TYPE" jdbcType="DECIMAL" property="hotelType" />
+    <result column="RELEASE_STATE" jdbcType="DECIMAL" property="releaseState" />
+    <result column="REMARK3" jdbcType="DECIMAL" property="remark3" />
+    <result column="REMARK4" jdbcType="DECIMAL" property="remark4" />
+    <result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser" />
+    <result column="USER_TYPE" jdbcType="DECIMAL" property="userType" />
+    <result column="EXAMINE_USER" jdbcType="VARCHAR" property="examineUser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, CREATE_TIME, DATA_SOURCE, OFFER_DESC, OFFER_ID, OFFER_NAME, OFFER_UNIT_CODE, 
+    OFFER_VALIDATE, ORIGIN_PRICE, PRICE, REMARK1, REMARK2, UPDATE_TIME, CHARGE_TYPE, 
+    CREATE_USER, DISCOUNT_DATE_BENGIN, DISCOUNT_DATE_END, DISCOUNT_PRICE, ENABLE_STATE, 
+    EXAMINE_DESC, EXAMINE_STATE, HOTEL_TYPE, RELEASE_STATE, REMARK3, REMARK4, UPDATE_USER, 
+    USER_TYPE, EXAMINE_USER
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from CON_PRODUCT
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+    delete from CON_PRODUCT
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.hzjy.res.entity.ConProduct">
+    insert into CON_PRODUCT (ID, CREATE_TIME, DATA_SOURCE, 
+      OFFER_DESC, OFFER_ID, OFFER_NAME, 
+      OFFER_UNIT_CODE, OFFER_VALIDATE, ORIGIN_PRICE, 
+      PRICE, REMARK1, REMARK2, 
+      UPDATE_TIME, CHARGE_TYPE, CREATE_USER, 
+      DISCOUNT_DATE_BENGIN, DISCOUNT_DATE_END, 
+      DISCOUNT_PRICE, ENABLE_STATE, EXAMINE_DESC, 
+      EXAMINE_STATE, HOTEL_TYPE, RELEASE_STATE, 
+      REMARK3, REMARK4, UPDATE_USER, 
+      USER_TYPE, EXAMINE_USER)
+    values (#{id,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, #{dataSource,jdbcType=VARCHAR}, 
+      #{offerDesc,jdbcType=VARCHAR}, #{offerId,jdbcType=VARCHAR}, #{offerName,jdbcType=VARCHAR}, 
+      #{offerUnitCode,jdbcType=VARCHAR}, #{offerValidate,jdbcType=DECIMAL}, #{originPrice,jdbcType=FLOAT}, 
+      #{price,jdbcType=FLOAT}, #{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{chargeType,jdbcType=DECIMAL}, #{createUser,jdbcType=VARCHAR}, 
+      #{discountDateBengin,jdbcType=TIMESTAMP}, #{discountDateEnd,jdbcType=TIMESTAMP}, 
+      #{discountPrice,jdbcType=FLOAT}, #{enableState,jdbcType=DECIMAL}, #{examineDesc,jdbcType=VARCHAR}, 
+      #{examineState,jdbcType=DECIMAL}, #{hotelType,jdbcType=DECIMAL}, #{releaseState,jdbcType=DECIMAL}, 
+      #{remark3,jdbcType=DECIMAL}, #{remark4,jdbcType=DECIMAL}, #{updateUser,jdbcType=VARCHAR}, 
+      #{userType,jdbcType=DECIMAL}, #{examineUser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hzjy.res.entity.ConProduct">
+    insert into CON_PRODUCT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="dataSource != null">
+        DATA_SOURCE,
+      </if>
+      <if test="offerDesc != null">
+        OFFER_DESC,
+      </if>
+      <if test="offerId != null">
+        OFFER_ID,
+      </if>
+      <if test="offerName != null">
+        OFFER_NAME,
+      </if>
+      <if test="offerUnitCode != null">
+        OFFER_UNIT_CODE,
+      </if>
+      <if test="offerValidate != null">
+        OFFER_VALIDATE,
+      </if>
+      <if test="originPrice != null">
+        ORIGIN_PRICE,
+      </if>
+      <if test="price != null">
+        PRICE,
+      </if>
+      <if test="remark1 != null">
+        REMARK1,
+      </if>
+      <if test="remark2 != null">
+        REMARK2,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="chargeType != null">
+        CHARGE_TYPE,
+      </if>
+      <if test="createUser != null">
+        CREATE_USER,
+      </if>
+      <if test="discountDateBengin != null">
+        DISCOUNT_DATE_BENGIN,
+      </if>
+      <if test="discountDateEnd != null">
+        DISCOUNT_DATE_END,
+      </if>
+      <if test="discountPrice != null">
+        DISCOUNT_PRICE,
+      </if>
+      <if test="enableState != null">
+        ENABLE_STATE,
+      </if>
+      <if test="examineDesc != null">
+        EXAMINE_DESC,
+      </if>
+      <if test="examineState != null">
+        EXAMINE_STATE,
+      </if>
+      <if test="hotelType != null">
+        HOTEL_TYPE,
+      </if>
+      <if test="releaseState != null">
+        RELEASE_STATE,
+      </if>
+      <if test="remark3 != null">
+        REMARK3,
+      </if>
+      <if test="remark4 != null">
+        REMARK4,
+      </if>
+      <if test="updateUser != null">
+        UPDATE_USER,
+      </if>
+      <if test="userType != null">
+        USER_TYPE,
+      </if>
+      <if test="examineUser != null">
+        EXAMINE_USER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataSource != null">
+        #{dataSource,jdbcType=VARCHAR},
+      </if>
+      <if test="offerDesc != null">
+        #{offerDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="offerId != null">
+        #{offerId,jdbcType=VARCHAR},
+      </if>
+      <if test="offerName != null">
+        #{offerName,jdbcType=VARCHAR},
+      </if>
+      <if test="offerUnitCode != null">
+        #{offerUnitCode,jdbcType=VARCHAR},
+      </if>
+      <if test="offerValidate != null">
+        #{offerValidate,jdbcType=DECIMAL},
+      </if>
+      <if test="originPrice != null">
+        #{originPrice,jdbcType=FLOAT},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=FLOAT},
+      </if>
+      <if test="remark1 != null">
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null">
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chargeType != null">
+        #{chargeType,jdbcType=DECIMAL},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="discountDateBengin != null">
+        #{discountDateBengin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="discountDateEnd != null">
+        #{discountDateEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="discountPrice != null">
+        #{discountPrice,jdbcType=FLOAT},
+      </if>
+      <if test="enableState != null">
+        #{enableState,jdbcType=DECIMAL},
+      </if>
+      <if test="examineDesc != null">
+        #{examineDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="examineState != null">
+        #{examineState,jdbcType=DECIMAL},
+      </if>
+      <if test="hotelType != null">
+        #{hotelType,jdbcType=DECIMAL},
+      </if>
+      <if test="releaseState != null">
+        #{releaseState,jdbcType=DECIMAL},
+      </if>
+      <if test="remark3 != null">
+        #{remark3,jdbcType=DECIMAL},
+      </if>
+      <if test="remark4 != null">
+        #{remark4,jdbcType=DECIMAL},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=DECIMAL},
+      </if>
+      <if test="examineUser != null">
+        #{examineUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hzjy.res.entity.ConProduct">
+    update CON_PRODUCT
+    <set>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataSource != null">
+        DATA_SOURCE = #{dataSource,jdbcType=VARCHAR},
+      </if>
+      <if test="offerDesc != null">
+        OFFER_DESC = #{offerDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="offerId != null">
+        OFFER_ID = #{offerId,jdbcType=VARCHAR},
+      </if>
+      <if test="offerName != null">
+        OFFER_NAME = #{offerName,jdbcType=VARCHAR},
+      </if>
+      <if test="offerUnitCode != null">
+        OFFER_UNIT_CODE = #{offerUnitCode,jdbcType=VARCHAR},
+      </if>
+      <if test="offerValidate != null">
+        OFFER_VALIDATE = #{offerValidate,jdbcType=DECIMAL},
+      </if>
+      <if test="originPrice != null">
+        ORIGIN_PRICE = #{originPrice,jdbcType=FLOAT},
+      </if>
+      <if test="price != null">
+        PRICE = #{price,jdbcType=FLOAT},
+      </if>
+      <if test="remark1 != null">
+        REMARK1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null">
+        REMARK2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="chargeType != null">
+        CHARGE_TYPE = #{chargeType,jdbcType=DECIMAL},
+      </if>
+      <if test="createUser != null">
+        CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="discountDateBengin != null">
+        DISCOUNT_DATE_BENGIN = #{discountDateBengin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="discountDateEnd != null">
+        DISCOUNT_DATE_END = #{discountDateEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="discountPrice != null">
+        DISCOUNT_PRICE = #{discountPrice,jdbcType=FLOAT},
+      </if>
+      <if test="enableState != null">
+        ENABLE_STATE = #{enableState,jdbcType=DECIMAL},
+      </if>
+      <if test="examineDesc != null">
+        EXAMINE_DESC = #{examineDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="examineState != null">
+        EXAMINE_STATE = #{examineState,jdbcType=DECIMAL},
+      </if>
+      <if test="hotelType != null">
+        HOTEL_TYPE = #{hotelType,jdbcType=DECIMAL},
+      </if>
+      <if test="releaseState != null">
+        RELEASE_STATE = #{releaseState,jdbcType=DECIMAL},
+      </if>
+      <if test="remark3 != null">
+        REMARK3 = #{remark3,jdbcType=DECIMAL},
+      </if>
+      <if test="remark4 != null">
+        REMARK4 = #{remark4,jdbcType=DECIMAL},
+      </if>
+      <if test="updateUser != null">
+        UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        USER_TYPE = #{userType,jdbcType=DECIMAL},
+      </if>
+      <if test="examineUser != null">
+        EXAMINE_USER = #{examineUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hzjy.res.entity.ConProduct">
+    update CON_PRODUCT
+    set CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      DATA_SOURCE = #{dataSource,jdbcType=VARCHAR},
+      OFFER_DESC = #{offerDesc,jdbcType=VARCHAR},
+      OFFER_ID = #{offerId,jdbcType=VARCHAR},
+      OFFER_NAME = #{offerName,jdbcType=VARCHAR},
+      OFFER_UNIT_CODE = #{offerUnitCode,jdbcType=VARCHAR},
+      OFFER_VALIDATE = #{offerValidate,jdbcType=DECIMAL},
+      ORIGIN_PRICE = #{originPrice,jdbcType=FLOAT},
+      PRICE = #{price,jdbcType=FLOAT},
+      REMARK1 = #{remark1,jdbcType=VARCHAR},
+      REMARK2 = #{remark2,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      CHARGE_TYPE = #{chargeType,jdbcType=DECIMAL},
+      CREATE_USER = #{createUser,jdbcType=VARCHAR},
+      DISCOUNT_DATE_BENGIN = #{discountDateBengin,jdbcType=TIMESTAMP},
+      DISCOUNT_DATE_END = #{discountDateEnd,jdbcType=TIMESTAMP},
+      DISCOUNT_PRICE = #{discountPrice,jdbcType=FLOAT},
+      ENABLE_STATE = #{enableState,jdbcType=DECIMAL},
+      EXAMINE_DESC = #{examineDesc,jdbcType=VARCHAR},
+      EXAMINE_STATE = #{examineState,jdbcType=DECIMAL},
+      HOTEL_TYPE = #{hotelType,jdbcType=DECIMAL},
+      RELEASE_STATE = #{releaseState,jdbcType=DECIMAL},
+      REMARK3 = #{remark3,jdbcType=DECIMAL},
+      REMARK4 = #{remark4,jdbcType=DECIMAL},
+      UPDATE_USER = #{updateUser,jdbcType=VARCHAR},
+      USER_TYPE = #{userType,jdbcType=DECIMAL},
+      EXAMINE_USER = #{examineUser,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>
